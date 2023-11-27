@@ -22,11 +22,11 @@
     
     - name: Run get_appconfig_data script
       shell: |
-        pip install --upgrade pip==20.3
         pip install --upgrade pip
         pip install pipenv
         pipenv shell
-        pipenv installi
+        pipenv install
         APPLICATION_ID="{{ application_id }}" ENVIRONMENT_ID="{{ environment_id }}" CONFIG_PROFILE_ID="{{ config_profile_id }}" FILE_PATH="{{ file_path }}" FILE_TYPE="{{ file_type }}" python3 /opt/goorm/scripts/get_appconfig_data/main.py
+        exit
 
     
