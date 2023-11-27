@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  
+  tasks:
+  - name: Create file in specific path
+    shell: echo "{{ input_text }}" > "{{ file_path }}"
