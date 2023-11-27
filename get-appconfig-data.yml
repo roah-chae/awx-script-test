@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  
+  tasks:
+    - name: Create a get_appconfig_data directory if it does not exist
+      become: yes
+      file:
+        owner: root
+        group: root
+        path: /opt/goorm/scripts/get_appconfig_data
+        state: directory
+        mode: 0755
+
+    - name: Create get_appconfig_data script and Pipfile
+      shell: |
+        echo "{{ get_appconfig_data_script }}" > /opt/goorm/scripts/get_appconfig_data/main.py
+        echo "{{ pipfile }}" > /opt/goorm/scripts/get_appconfig_data/Pipfile
+        chmod 755 /opt/goorm/scripts/get_appconfig_data/main.py
+    
+    - name: Run get_appconfig_data script
+      shell: |
+        APPLICATION_ID="{{ application_id }}" ENVIRONMENT_ID="{{ environment_id }}" CONFIG_PROFILE_ID="{{ config_profile_id }}" FILE_PATH="{{ file_path }}" FILE_TYPE="{{ file_type }}" bash /opt/goorm/scripts/get_appconfig_data/main.py
+
+    
