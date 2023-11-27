@@ -15,6 +15,6 @@
     - name: Print result variable
       debug:
         msg:
-          - "{{ result.stdout }}"
+          - "{{ result.stdout | from_json }}"
 
     
