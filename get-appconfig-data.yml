@@ -23,6 +23,9 @@
     
     - name: Run get_appconfig_data script
       shell: |
-        APPLICATION_ID="{{ application_id }}" ENVIRONMENT_ID="{{ environment_id }}" CONFIG_PROFILE_ID="{{ config_profile_id }}" FILE_PATH="{{ file_path }}" FILE_TYPE="{{ file_type }}" bash /opt/goorm/scripts/get_appconfig_data/main.py
+        pip install pipenv
+        pipenv shell
+        pipenv install
+        APPLICATION_ID="{{ application_id }}" ENVIRONMENT_ID="{{ environment_id }}" CONFIG_PROFILE_ID="{{ config_profile_id }}" FILE_PATH="{{ file_path }}" FILE_TYPE="{{ file_type }}" python3 /opt/goorm/scripts/get_appconfig_data/main.py
 
     
