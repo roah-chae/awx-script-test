@@ -7,4 +7,6 @@
   
   tasks:
   - name: Create file in specific path
-    shell: echo -e "{{ input_text }}" > "{{ file_path }}"
+    copy:
+      content: "{{ input_text }}"
+      dest: "{{ file_path }}"
